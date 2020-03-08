@@ -4,7 +4,7 @@ class ProxyFactory {
         
         return new Proxy(objeto, {        
             get(target, prop, receiver) {        
-                if(props.includes(prop) && _isFunction(target[prop])) {        
+                if(props.includes(prop) && ProxyFactory._isFunction(target[prop])) {        
                     return function(){        
                         console.log(`método '${prop}' interceptado`);        
                         Reflect.apply(target[prop], target, arguments);        
