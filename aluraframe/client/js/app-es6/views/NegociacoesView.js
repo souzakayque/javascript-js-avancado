@@ -1,7 +1,18 @@
-class NegociacoesView extends View {
+import { View } from './View';
+import { DateHelper } from '../helpers/DateHelper';
+import { currentInstance } from '../controllers/NegociacaoController';
+
+export class NegociacoesView extends View {
     
     constructor(elemento){
-        super(elemento)
+        super(elemento);
+
+        elemento.addEventListener('click', function(event) {
+            if(event.target.nodeName == 'TH') {
+                currentInstance().ordena(event.target.content.toLowerCase());
+            }
+        });
+
     }
 
     template(model) {
